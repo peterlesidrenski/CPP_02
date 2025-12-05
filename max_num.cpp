@@ -14,6 +14,6 @@ int main() {
     int* result = max_element(myNumbers, 10);
 
     cout << "The max number is: " << *result << endl;
-    
+    cout << "Address   = " << result << endl
     return 0;
 }
