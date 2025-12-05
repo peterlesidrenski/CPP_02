@@ -1,13 +1,13 @@
 #include <iostream>
 using namespace std;
 int* max_element(int arr[], int n) {
-    int *max_ptr = &arr[0];        
+    int *max = &arr[0];        
     for (int i = 1; i < n; i++) {
-        if (arr[i] > *max_ptr) {   
-            max_ptr = &arr[i];     
+        if (arr[i] > *max) {   
+            max = &arr[i];     
         }
     }
-    return max_ptr;                
+    return max;                
 }
 int main() {
     int myNumbers[10] = {5, 12, 33, -1, 105, 4, 107, 90, 2, 0};
