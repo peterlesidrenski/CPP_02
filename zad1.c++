@@ -1,49 +1,48 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
-int countvowels(const char* str) {
-    int count = 0;
-    while (*str) {
-        char character = tolower(*str);
-        if (character == 'a' || character == 'e' || character == 'i' || character == 'o' || character == 'u') {
-            count++;
-        }
-        str++;
-    }
-    return count;
-}
+struct Student {
+    string name;
+    int number_in_faculty;
+    double avg_grade;
+};
 
-int lenghtstring(const char* str) {
-    int length = 0;
-    while (*str) {
-        length++;
-        str++;
-    }
-    return length;
-}
-
-int reverse(const char* str, char* reversed) {
-    int length = lenghtstring(str);
-    for (int i = 0; i < length; i++) {
-        reversed[i] = str[length - 1 - i];
-    }
-    reversed[length] = '\0';
-    return length;
-}
 int main() {
-    char str[100];
-    char reversed[100];
+    int N;
+    cout << "Enter number of students: ";
+    cin >> N;
 
-    cout << "Enter a string: ";
-    cin.getline(str, 100);
+    Student students[N];
 
-    int vowelCount = countvowels(str);
-    int length = lenghtstring(str);
-    reverse(str, reversed);
+    for (int i = 0; i < N; i++) {
+        cout << "\nStudent " << i + 1 << ":\n";
+        cout << "Name: ";
+        cin >> students[i].name;
+        cout << "Faculty number: ";
+        cin >> students[i].number_in_faculty;
+        cout << "Average grade: ";
+        cin >> students[i].avg_grade;
 
-    cout << "Number of vowels: " << vowelCount << endl;
-    cout << "Length of the string: " << length << endl;
-    cout << "Reversed string: " << reversed << endl;
+    }
+    cout << "\nInformation about all students:\n";
+    for (int i = 0; i < N; i++) {
+        cout << "Name: " << students[i].name
+             << ", Faculty number: " << students[i].number_in_faculty
+             << ", Average grade: " << students[i].avg_grade << endl;
+    }
+
+    int maxIndex = 0;
+    for (int i = 1; i < N; i++) {
+        if (students[i].avg_grade > students[maxIndex].avg_grade) {
+            maxIndex = i;
+        }
+    }
+
+    cout << "\nStudent with highest average grade:\n";
+    cout << "Name: " << students[maxIndex].name
+         << ", Faculty number: " << students[maxIndex].number_in_faculty
+         << ", Average grade: " << students[maxIndex].avg_grade << endl;
 
     return 0;
 }
